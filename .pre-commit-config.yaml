@@ -1,0 +1,23 @@
+# Versión mínima requerida
+minimum_pre_commit_version: "2.20.0"
+
+repos:
+  # Corrige errores y ordena librerías
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.11.2"
+    hooks:
+      - id: ruff
+      - id: ruff-format
+
+  # Formateador del codigo
+  - repo: https://github.com/psf/black
+    rev: "25.1.0"
+    hooks:
+      - id: black
+
+
+  # Commitizen para mensajes de commits estándar
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: "v4.4.1"
+    hooks:
+      - id: commitizen

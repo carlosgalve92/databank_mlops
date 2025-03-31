@@ -1,0 +1,12 @@
+venv/
+.vscode/
+*.log
+*.log.*
+
+__pycache__
+*.egg-info
+
+dist/
+
+
+!.gitkeep

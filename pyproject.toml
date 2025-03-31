@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools", "setuptools_scm", "wheel",]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "databank_mlops"
+dynamic = ["version"]
+description = "MLOps course"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [
+    { name = "Carlos Galve", email = "carlos.galve92@gmail.com" }]
+
+dependencies = [
+    "pandas",
+    "pytest",
+    "pyyaml",
+    "numba",
+]
+
+[project.optional-dependencies]
+dev = [
+    "build", "twine",
+    "dvc",
+    "ruff", "black",
+    "pre-commit", "commitizen",
+    "jupyter"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["databank_mlops"]
+#exclude = ["otro_paquete", "paquete_extra"]
+
+[tool.setuptools_scm]
+#write_to = "src/databank_mlops/_version.py"
+#tag_regex = "^v(?P<version>.*)$"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+testpaths = ["tests"]
+
+[tool.ruff]
+fix = true
+line-length = 88
+
+[tool.black]
+line-length = 88
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.0.0"  # IMPORTANTE: Asegurarse de que este campo existe
+tag_format = "v$version"
+version_files = [
+    "pyproject.toml:version",
+    "src/databank_mlops/_version.py:__version__"
+]
