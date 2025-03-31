@@ -283,6 +283,6 @@ Es un sistema de control de versiones distribuido de código abierto que permite
         cz changelog
         ```
 
-## Apendice instalar git en Windows
+## Apendice instalar git (Windows)
 
 [Tutorial instalar git](https://www.youtube.com/watch?v=3FTficFKzME&ab_channel=AComputerGuru)
