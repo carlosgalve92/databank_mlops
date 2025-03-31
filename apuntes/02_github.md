@@ -56,6 +56,26 @@ GitHub es una plataforma que permite a los desarrolladores almacenar, gestionar 
     git pull --rebase origin <rama>
     ```
 
+* Subir tags a GitHub
+
+    
+    Subir un tag
+    
+    ```
+    git push origin <nombre del tag>
+    ```
+
+    Subir todos los tags
+    ```
+    git push <nombre repositorio remoto> --tags
+    ```
+
+    Borrar tag de GitHub
+
+    ```
+    git push --delete <nombre repositorio remoto> <nombre del tag>
+    ```
+
 
 ## Actions (workflow)
 
