@@ -33,13 +33,13 @@ GitHub es una plataforma que permite a los desarrolladores almacenar, gestionar 
 * Llevar a cabo el merge
 
     ```
-    git merge oring/<rama>
+    git merge origin/<rama>
     ```
 
 * LLevar a cabo el rebase
 
     ```
-    git rebase oring/<rama>
+    git rebase origin/<rama>
     ```
 
 * Usar al mismo tiempo fetch & merge o fetch & rebase
