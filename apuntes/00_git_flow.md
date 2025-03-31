@@ -42,7 +42,7 @@ El Git Flow en un sistema de Machine Learning (ML) sigue una estructura similar 
 
 5. Si hay un error en el master, se genera rama de hotfix para llevar a cabo una rápida corrección, fusionando esta rama con las ramas de develop y master.
 
-## Herramientas
+## Herramientas para llevar a cabo Git Flow
 
 ### [Git](01_git.md)
 
