@@ -140,7 +140,7 @@ Es un sistema de control de versiones distribuido de código abierto que permite
 
     Dentro de los commit, también hay una herramienta que ayuda a validar que los formatos de los commits son correctos, y que el código sigue las buenas práctias. Esta herramienta es pre-commits que se instala ejecutando ```pip install pre-commits```. Para indicar que se quiere validar antes de llevar a cabo el commit, se configura mediante hooks indicados en el fichero de configuración de [.pre-commits-config.yaml](./../.pre-commit-config.yaml) y las configuraciones de estos en el [pyproject.toml](./../pyproject.toml).
 
-    * Mencionar que una vez obtenido _pre-commits_, es necesario instalarlo mediante ´´´pre-commit install --hook-type commit-msg´´´ donde la ultima parte es para que se validen los mensajes del commit antes de llevarlos a cabo.
+    * Mencionar que una vez obtenido _pre-commits_, es necesario instalarlo mediante ´´´pre-commit install´´´ y ´´´pre-commit install --hook-type commit-msg´´´ donde la ultima parte es para que se validen los mensajes del commit antes de llevarlos a cabo.
 
 
 * Eliminar commits (si se quiere eliminar los cambios que se hicieron en los commits que vienen despues de la versión a la que se regresa, existe el argumento --hard, el cual se recomienda utilizar como mucho cuidado).
