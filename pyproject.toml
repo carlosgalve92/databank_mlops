@@ -24,7 +24,9 @@ dev = [
     "dvc",
     "ruff", "black",
     "pre-commit", "commitizen",
-    "jupyter"]
+    "jupyter",
+    "numpy", "pandas", "openpyxl", "pyarrow",
+    "polars"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
