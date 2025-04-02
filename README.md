@@ -39,13 +39,13 @@ jupyter notebook
 ```
 
 Donde automáticamente, se abrirá el navegador por defecto y aparecerá la siguiente pantalla:
-![screen_display_notebook](.\images\screen_display_notebook.JPG)
+![screen_display_notebook](./images/screen_display_notebook.JPG)
 
 En caso no se abriera automáticamente el navegador, simplemente sería copiar la _url_ que viene en la linea de comandos (```http://localhost:8888/tree```):
-![url_notebook_server](.\images\url_notebook_server.JPG)
+![url_notebook_server](./images/url_notebook_server.JPG)
 
 Entonces, se entraría en la carpeta que se generó para experimentar (_experiments_), y se generaría un notebook usando el kernel que se generó anteriormente ```venv (mlops course)``` poniendole el nombre de **00_introduccion_python**:
-![notebook_generation](.\images\notebook_generation.JPG)
+![notebook_generation](./images/notebook_generation.JPG)
 
 **Y ha empezar a programar!!!**
 
