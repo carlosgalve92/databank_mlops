@@ -21,7 +21,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = [
     "build", "twine",
-    "dvc",
+    "dvc", "dvc[s3]",
     "ruff", "black",
     "pre-commit", "commitizen",
     "jupyter",
