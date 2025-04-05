@@ -26,7 +26,12 @@ dev = [
     "pre-commit", "commitizen",
     "jupyter",
     "numpy", "pandas", "openpyxl", "pyarrow",
-    "polars"]
+    "polars", "duckdb",
+    "sqlalchemy", "duckdb-engine",
+    "matplotlib", "seaborn", "optbinning",
+    "scikit-learn", "kaggle",
+    "torch", "tensorflow"
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]
