@@ -1,8 +1,9 @@
 import databank_mlops
-from databank_mlops.logger.logger import logger
+from databank_mlops.app.router import router
+from fastapi import FastAPI
 
-for i in range(10000000):
-    logger.debug(f"Versión del package: {databank_mlops.__version__}")
-    logger.info(f"Versión del package: {databank_mlops.__version__}")
-    logger.info(f"Versión del package: {databank_mlops.__version__}")
-    logger.error(f"Versión del package: {databank_mlops.__version__}")
+app = FastAPI(
+    title=rf"{databank_mlops.__name__}", version=rf"{databank_mlops.__version__}"
+)
+
+app.include_router(router)
