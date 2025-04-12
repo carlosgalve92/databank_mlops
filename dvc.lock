@@ -1,0 +1,135 @@
+schema: '2.0'
+stages:
+  ingesion:
+    cmd: python src/databank_mlops/pipeline/data_ingestion_pipeline.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: eb0c9b0cacf83dcc0848a76bdb63dc91
+      size: 4357
+    - path: src/databank_mlops/components/ingestion/data_ingestion.py
+      hash: md5
+      md5: 833ec09a4b38590edc6a00365380b920
+      size: 696
+    outs:
+    - path: artifacts/data_ingestion/train.csv
+      hash: md5
+      md5: a8b6c93a5ecd8ffb4212340d218b7981
+      size: 31136044
+  validaion:
+    cmd: python src/databank_mlops/pipeline/data_validation_pipeline.py
+    deps:
+    - path: artifacts/data_ingestion/train.csv
+      hash: md5
+      md5: a8b6c93a5ecd8ffb4212340d218b7981
+      size: 31136044
+    - path: config/config.yaml
+      hash: md5
+      md5: eb0c9b0cacf83dcc0848a76bdb63dc91
+      size: 4357
+    - path: src/databank_mlops/components/validation/data_validation.py
+      hash: md5
+      md5: 1bc63d40ece70f2440fd5e99d1c66457
+      size: 1040
+    outs:
+    - path: artifacts/data_validation/status.txt
+      hash: md5
+      md5: 86e6a2f694c57a675b3e2da6b95ff9ba
+      size: 23
+  preprocess:
+    cmd: python src/databank_mlops/pipeline/data_transformation_pipeline.py
+    deps:
+    - path: artifacts/data_validation/status.txt
+      hash: md5
+      md5: 86e6a2f694c57a675b3e2da6b95ff9ba
+      size: 23
+    - path: config/config.yaml
+      hash: md5
+      md5: eb0c9b0cacf83dcc0848a76bdb63dc91
+      size: 4357
+    - path: src/databank_mlops/components/transformation/data_transformation.py
+      hash: md5
+      md5: 9a6dfa2a8a07738f2224140633e4e148
+      size: 3450
+    - path: src/databank_mlops/components/transformation/preprocessors/field_number.py
+      hash: md5
+      md5: a8532eed674d820262ab2ccc64f7b1a1
+      size: 1573
+    - path: src/databank_mlops/components/transformation/preprocessors/field_text.py
+      hash: md5
+      md5: a0aa3f91242c358ce6e17d6c2cde0902
+      size: 5769
+    - path: 
+        src/databank_mlops/components/transformation/preprocessors/field_text_to_number.py
+      hash: md5
+      md5: 98a60d23d4c828ba647582d65318a094
+      size: 864
+    outs:
+    - path: artifacts/data_transformation/pl_preprocess.joblib
+      hash: md5
+      md5: d93ca05b90e0028a9985571a642b7d6e
+      size: 2141
+    - path: artifacts/data_transformation/test.csv
+      hash: md5
+      md5: 1cb550e863f7841b7f5c0e223db876a5
+      size: 7681289
+    - path: artifacts/data_transformation/train.csv
+      hash: md5
+      md5: 684916a51aa102054681ac470184b37a
+      size: 23001970
+  train:
+    cmd: python src/databank_mlops/pipeline/model_trainer_pipeline.py
+    deps:
+    - path: artifacts/data_transformation/pl_preprocess.joblib
+      hash: md5
+      md5: d93ca05b90e0028a9985571a642b7d6e
+      size: 2141
+    - path: artifacts/data_transformation/train.csv
+      hash: md5
+      md5: 684916a51aa102054681ac470184b37a
+      size: 23001970
+    - path: config/config.yaml
+      hash: md5
+      md5: eb0c9b0cacf83dcc0848a76bdb63dc91
+      size: 4357
+    - path: src/databank_mlops/components/train/model_trainer.py
+      hash: md5
+      md5: 3e0c44e5db8d3e63c6336762d8a19825
+      size: 1532
+    outs:
+    - path: artifacts/model_trainer/XGBClassifier__1.0.joblib
+      hash: md5
+      md5: 9f761dc637d955443f7d2ddaf0a02160
+      size: 539056
+  evaluation:
+    cmd: python src/databank_mlops/pipeline/model_evaluation_pipeline.py
+    deps:
+    - path: artifacts/data_transformation/pl_preprocess.joblib
+      hash: md5
+      md5: d93ca05b90e0028a9985571a642b7d6e
+      size: 2141
+    - path: artifacts/data_transformation/test.csv
+      hash: md5
+      md5: 1cb550e863f7841b7f5c0e223db876a5
+      size: 7681289
+    - path: artifacts/data_transformation/train.csv
+      hash: md5
+      md5: 684916a51aa102054681ac470184b37a
+      size: 23001970
+    - path: artifacts/model_trainer/XGBClassifier__1.0.joblib
+      hash: md5
+      md5: 9f761dc637d955443f7d2ddaf0a02160
+      size: 539056
+    - path: config/config.yaml
+      hash: md5
+      md5: eb0c9b0cacf83dcc0848a76bdb63dc91
+      size: 4357
+    - path: src/databank_mlops/components/evaluation/model_evaluation.py
+      hash: md5
+      md5: 72d41baa7c32b5ab0ed984c14b206ea2
+      size: 4491
+    outs:
+    - path: artifacts/model_evaluation/metrics.json
+      hash: md5
+      md5: 3f1ce60f91a999a4b1eb96a3e6d3b7e2
+      size: 319
