@@ -8,5 +8,7 @@ __pycache__
 
 dist/
 
+.env
 
 !.gitkeep
+/metrics.json
