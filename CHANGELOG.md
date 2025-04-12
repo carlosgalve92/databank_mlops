@@ -1,3 +1,9 @@
+## v8.0.2 (2025-04-12)
+
+### Fix
+
+- **components**: Se corrige component de train y evaluation
+
 ## v8.0.1 (2025-04-12)
 
 ### Fix
