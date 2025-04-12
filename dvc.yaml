@@ -1,0 +1,58 @@
+stages:
+  ingesion:
+    cmd: python src/databank_mlops/pipeline/data_ingestion_pipeline.py
+    deps:
+      - src/databank_mlops/components/ingestion/data_ingestion.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_ingestion/train.csv
+
+  validaion:
+    cmd: python src/databank_mlops/pipeline/data_validation_pipeline.py
+    deps:
+      - artifacts/data_ingestion/train.csv 
+      - src/databank_mlops/components/validation/data_validation.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_validation/status.txt
+  
+  preprocess:
+    cmd: python src/databank_mlops/pipeline/data_transformation_pipeline.py
+    deps:
+      #- artifacts/data_ingestion/train.csv
+      - artifacts/data_validation/status.txt
+      - src/databank_mlops/components/transformation/data_transformation.py
+      - src/databank_mlops/components/transformation/preprocessors/field_number.py
+      - src/databank_mlops/components/transformation/preprocessors/field_text.py
+      - src/databank_mlops/components/transformation/preprocessors/field_text_to_number.py
+      - config/config.yaml
+    outs:
+      - artifacts/data_transformation/pl_preprocess.joblib
+      - artifacts/data_transformation/train.csv
+      - artifacts/data_transformation/test.csv
+  
+  train:
+    cmd: python src/databank_mlops/pipeline/model_trainer_pipeline.py
+    deps:
+      #- artifacts/data_ingestion/train.csv
+      #- artifacts/data_validation/status.txt
+      - artifacts/data_transformation/pl_preprocess.joblib
+      - artifacts/data_transformation/train.csv
+      - src/databank_mlops/components/train/model_trainer.py
+      - config/config.yaml
+    outs:
+      - artifacts/model_trainer/XGBClassifier__1.0.joblib
+  
+  evaluation:
+    cmd: python src/databank_mlops/pipeline/model_evaluation_pipeline.py
+    deps:
+      #- artifacts/data_ingestion/train.csv
+      #- artifacts/data_validation/status.txt
+      - artifacts/data_transformation/pl_preprocess.joblib
+      - artifacts/data_transformation/train.csv
+      - artifacts/data_transformation/test.csv
+      - artifacts/model_trainer/XGBClassifier__1.0.joblib
+      - src/databank_mlops/components/evaluation/model_evaluation.py
+      - config/config.yaml
+    metrics:
+      - artifacts/model_evaluation/metrics.json

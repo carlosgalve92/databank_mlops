@@ -1,9 +1,8 @@
-from fastapi import APIRouter, HTTPException, Depends, Query
+from fastapi import APIRouter, HTTPException, Depends
 import pandas as pd
 from databank_mlops.app.schemas.predict import PredictRequest, PredictResponse
-from databank_mlops.app.singleton.model import get_model_factory
-from databank_mlops.models.factory import ModelFactory
-
+from databank_mlops.app.singleton.model import load_model
+from typing import Any
 
 router = APIRouter()
 
@@ -12,14 +11,9 @@ router = APIRouter()
 @router.post("/predict", response_model=PredictResponse)
 async def predict(
     request: PredictRequest,
-    model_factory: ModelFactory = Depends(get_model_factory),
-    model_name: str = Query(...),
-    model_version: str = Query("latest"),
+    model: Any = Depends(load_model),
 ):
     try:
-        # Instanciamos el predictor que hace la inferencia
-        model = model_factory.get_model(model_name, model_version)
-
         # Extraemos las características del request y llamamos al método
         # predict
         prediction = model.predict_proba(pd.DataFrame([request.dict()]))[:, 1].squeeze()
