@@ -4,9 +4,29 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
 from databank_mlops.entity.config_entity import DataTransformationConfig
+from databank_mlops.components.transformation.preprocessors.field_number import (
+    mb_simple_imputer,
+    mb_standard_scaler,
+)
+from databank_mlops.components.transformation.preprocessors.field_text import (
+    mb_clean_text,
+    mb_woe_encoder,
+)
+from databank_mlops.components.transformation.preprocessors.field_text_to_number import (
+    mb_clean_text_number,
+)
 import pandas as pd
 import numpy as np
 import pathlib
+
+
+TRANSFORM_REGISTRY = {
+    "mb_simple_imputer": mb_simple_imputer,
+    "mb_standard_scaler": mb_standard_scaler,
+    "mb_clean_text": mb_clean_text,
+    "mb_woe_encoder": mb_woe_encoder,
+    "mb_clean_text_number": mb_clean_text_number,
+}
 
 
 class DataTransformation:
@@ -58,7 +78,8 @@ class DataTransformation:
                 class_name = step.name
                 params = step.get("params", {})
 
-                transform = globals().get(class_name)
+                # transform = globals().get(class_name)
+                transform = TRANSFORM_REGISTRY.get(class_name)
                 transform = transform(**params)
 
                 steps_pipe.append((class_name, transform))
@@ -70,6 +91,9 @@ class DataTransformation:
             force_int_remainder_cols=False,
         )
 
+        print(
+            rf"Saving {pathlib.Path(self.config.root_dir).joinpath('pl_preprocess.joblib')}"
+        )
         save_bin(
             self.pl_preprocess,
             pathlib.Path(self.config.root_dir).joinpath("pl_preprocess.joblib"),
