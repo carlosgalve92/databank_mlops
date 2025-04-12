@@ -2,7 +2,6 @@ from databank_mlops.config.configuration import ConfigurationManager
 from databank_mlops.components.train.model_trainer import ModelTrainer
 from databank_mlops.logger.logger import logger
 
-
 STAGE_NAME = "Model Trainer stage"
 
 

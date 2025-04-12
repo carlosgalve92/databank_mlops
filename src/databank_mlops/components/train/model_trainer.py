@@ -1,9 +1,14 @@
 import pandas as pd
 from databank_mlops.utils.common import load_bin, save_bin
 from sklearn.pipeline import Pipeline
+from xgboost import XGBClassifier
 import pathlib
 
 from databank_mlops.entity.config_entity import ModelTrainerConfig
+
+MODEL_REGISTRY = {
+    "XGBClassifier": XGBClassifier,
+}
 
 
 class ModelTrainer:
@@ -22,7 +27,8 @@ class ModelTrainer:
         self.pl_preprocess = load_bin(pl_preprocess_path)
 
     def create_model(self, model, dict_params):
-        model = globals().get(model)
+        # model = globals().get(model)
+        model = MODEL_REGISTRY.get(model)
         self.model = model(**dict_params)
 
     def build_pipeline(self):
