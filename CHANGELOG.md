@@ -1,3 +1,9 @@
+## v6.0.0 (2025-04-12)
+
+### Feat
+
+- **app**: se pone la version antigua de singleton y endpoint predict
+
 ## v5.0.0 (2025-04-12)
 
 ### Feat
