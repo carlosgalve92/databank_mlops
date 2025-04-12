@@ -1,3 +1,9 @@
+## Unreleased
+
+### Feat
+
+- **preprocessors**: se regresa a la version antigua de preprocessors
+
 ## v6.0.0 (2025-04-12)
 
 ### Feat
