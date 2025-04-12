@@ -1,3 +1,9 @@
+## v8.0.1 (2025-04-12)
+
+### Fix
+
+- **transformation-component**: se añaden la importacion de clases
+
 ## v8.0.0 (2025-04-12)
 
 ### Feat
