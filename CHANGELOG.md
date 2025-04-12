@@ -1,3 +1,9 @@
+## v8.0.0 (2025-04-12)
+
+### Feat
+
+- **src**: Se incorpora resto funcionalidad sistema ML
+
 ## v7.0.0 (2025-04-12)
 
 ### Feat
