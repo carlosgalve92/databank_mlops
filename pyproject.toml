@@ -21,6 +21,11 @@ dependencies = [
     "joblib",
     "dvc",
     "dvc[s3]",
+    "python-box",
+    "xgboost",
+    "mlflow",
+    "kaggle",
+    "python-dotenv"
 ]
 
 [project.optional-dependencies]

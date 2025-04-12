@@ -1,3 +1,23 @@
+## v3.0.0 (2025-04-09)
+
+### Feat
+
+- **docker**: Se modifica nb sklearn y se incorpora dockerfile y apuntes
+- **models**: Se incorpora modelo logistic regression en dvc
+- **app**: Se incorpora funcionalidad de la app
+
+## v2.0.0 (2025-04-07)
+
+### Feat
+
+- **experiments**: Se incorporan notebooks de librerias usadas para ML
+- **data**: Se incorpora fichero parquet prueba.parquet
+- **data**: Se incorpora nueva version prueba csv
+
+### Fix
+
+- **experiments**: Se corrige titulo de ordenacion y se quitan indices a la hora de guardar ficheros
+
 ## v1.4.0 (2025-04-02)
 
 ### Feat

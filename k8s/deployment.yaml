@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment  # Tipo de objeto: un Deployment gestiona los Pods y las réplicas
+metadata:
+  name: fastapi-deployment  # Nombre del Deployment
+spec:
+  replicas: 2  # Número de Pods deseados
+  selector:
+    matchLabels:
+      app: fastapi  # Se usa para hacer "match" con los Pods que controlará
+  template:
+    metadata:
+      labels:
+        app: fastapi  # Etiqueta que debe coincidir con el selector de arriba
+    spec:
+      containers:
+        - name: fastapi-container  # Nombre del contenedor dentro del Pod
+          image: prueba_imagen  # Imagen a usar (ya construida dentro de Minikube)
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000  # Puerto expuesto por uvicorn dentro del contenedor
