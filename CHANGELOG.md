@@ -1,3 +1,9 @@
+## v5.0.0 (2025-04-12)
+
+### Feat
+
+- **src**: Se incorpora funcionalidad de utils, ingesta y validacion data
+
 ## v3.0.0 (2025-04-09)
 
 ### Feat
