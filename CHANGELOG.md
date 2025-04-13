@@ -1,3 +1,15 @@
+## v9.0.0 (2025-04-13)
+
+### Feat
+
+- **src**: se añade raise en evaluation cuando se va a guardar en local
+
+### Refactor
+
+- **dvc.lock**: Se actualiza file
+- **dvc.lock**: se añade fichero
+- **config**: Se cambia hiperparamtrp de max_depth a 7
+
 ## v8.0.2 (2025-04-12)
 
 ### Fix
