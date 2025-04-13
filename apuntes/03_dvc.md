@@ -128,6 +128,42 @@ Es un sistema de control de versiones open-source diseñado específicamente par
     dvc fetch
     ```
 
+* Correr experimento
+
+    ```
+    dvc exp run
+    ```
+
+* Aplicar experimento (para que sea efectivo el commit en git)
+
+    ```
+    dvc exp apply <nombre experimento>
+    ```
+
+* Mostrar experimentos
+
+    ```
+    dvc exp show
+    ```
+
+* Subir outputs al repositorio remoto y al repositorio git los metadatos
+
+    ```
+    dvc exp push origin --all
+    ```
+
+* Listar experimentos
+
+    ```
+    dvc exp list --all
+    ```
+
+* Descargar del repositorio remoto
+
+    ```
+    dvc exp pull origin --all
+    ```
+
 
 ## Apendice instalar DVC (windows)
 
