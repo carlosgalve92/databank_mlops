@@ -5,7 +5,7 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: 627bb1f117790b62c2f856a3a245682d
+      md5: cb6840e60827c1f3880a0049ce0501ea
       size: 4358
     - path: src/databank_mlops/components/ingestion/data_ingestion.py
       hash: md5
@@ -25,7 +25,7 @@ stages:
       size: 31136044
     - path: config/config.yaml
       hash: md5
-      md5: 627bb1f117790b62c2f856a3a245682d
+      md5: cb6840e60827c1f3880a0049ce0501ea
       size: 4358
     - path: src/databank_mlops/components/validation/data_validation.py
       hash: md5
@@ -45,7 +45,7 @@ stages:
       size: 23
     - path: config/config.yaml
       hash: md5
-      md5: 627bb1f117790b62c2f856a3a245682d
+      md5: cb6840e60827c1f3880a0049ce0501ea
       size: 4358
     - path: src/databank_mlops/components/transformation/data_transformation.py
       hash: md5
@@ -90,7 +90,7 @@ stages:
       size: 23001970
     - path: config/config.yaml
       hash: md5
-      md5: 627bb1f117790b62c2f856a3a245682d
+      md5: cb6840e60827c1f3880a0049ce0501ea
       size: 4358
     - path: src/databank_mlops/components/train/model_trainer.py
       hash: md5
@@ -99,8 +99,8 @@ stages:
     outs:
     - path: artifacts/model_trainer/XGBClassifier__1.0.joblib
       hash: md5
-      md5: cbfc81cd5d0b175d522a64e48cc3e207
-      size: 663195
+      md5: 61fe45e4994d93531b3f842e4243f626
+      size: 1508844
   evaluation:
     cmd: python src/databank_mlops/pipeline/model_evaluation_pipeline.py
     deps:
@@ -118,11 +118,11 @@ stages:
       size: 23001970
     - path: artifacts/model_trainer/XGBClassifier__1.0.joblib
       hash: md5
-      md5: cbfc81cd5d0b175d522a64e48cc3e207
-      size: 663195
+      md5: 61fe45e4994d93531b3f842e4243f626
+      size: 1508844
     - path: config/config.yaml
       hash: md5
-      md5: 627bb1f117790b62c2f856a3a245682d
+      md5: cb6840e60827c1f3880a0049ce0501ea
       size: 4358
     - path: src/databank_mlops/components/evaluation/model_evaluation.py
       hash: md5
@@ -131,5 +131,5 @@ stages:
     outs:
     - path: artifacts/model_evaluation/metrics.json
       hash: md5
-      md5: ffa455a23eb95ea03f4b8befa48b62ee
-      size: 319
+      md5: 6b48ab8ffb4a93fc9fca7ad624f3799d
+      size: 321

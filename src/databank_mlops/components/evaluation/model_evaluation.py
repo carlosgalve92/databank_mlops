@@ -91,7 +91,11 @@ class ModelEvaluation:
                     ),
                 )
             else:
-                mlflow.sklearn.log_model(model, "model")
+                raise Exception(
+                    "Falta configurar el fihcero .env (se ha dejado una "
+                    + "plantilla (.env_template) con las variables a "
+                    + "definir para usar repositorio remoto"
+                )
 
         client = mlflow.tracking.MlflowClient()
 
