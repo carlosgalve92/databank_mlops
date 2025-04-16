@@ -5,7 +5,7 @@ stages:
     deps:
     - path: config/config.yaml
       hash: md5
-      md5: cb6840e60827c1f3880a0049ce0501ea
+      md5: 01c485061fa72be938e0102f83ceb138
       size: 4358
     - path: src/databank_mlops/components/ingestion/data_ingestion.py
       hash: md5
@@ -25,7 +25,7 @@ stages:
       size: 31136044
     - path: config/config.yaml
       hash: md5
-      md5: cb6840e60827c1f3880a0049ce0501ea
+      md5: 01c485061fa72be938e0102f83ceb138
       size: 4358
     - path: src/databank_mlops/components/validation/data_validation.py
       hash: md5
@@ -45,7 +45,7 @@ stages:
       size: 23
     - path: config/config.yaml
       hash: md5
-      md5: cb6840e60827c1f3880a0049ce0501ea
+      md5: 01c485061fa72be938e0102f83ceb138
       size: 4358
     - path: src/databank_mlops/components/transformation/data_transformation.py
       hash: md5
@@ -62,8 +62,8 @@ stages:
     - path: 
         src/databank_mlops/components/transformation/preprocessors/field_text_to_number.py
       hash: md5
-      md5: 98a60d23d4c828ba647582d65318a094
-      size: 864
+      md5: 04b0d9f4a77ffd54066579a1d765a454
+      size: 888
     outs:
     - path: artifacts/data_transformation/pl_preprocess.joblib
       hash: md5
@@ -90,7 +90,7 @@ stages:
       size: 23001970
     - path: config/config.yaml
       hash: md5
-      md5: cb6840e60827c1f3880a0049ce0501ea
+      md5: 01c485061fa72be938e0102f83ceb138
       size: 4358
     - path: src/databank_mlops/components/train/model_trainer.py
       hash: md5
@@ -99,8 +99,8 @@ stages:
     outs:
     - path: artifacts/model_trainer/XGBClassifier__1.0.joblib
       hash: md5
-      md5: 61fe45e4994d93531b3f842e4243f626
-      size: 1508844
+      md5: 3cc347a1e79257dc0f18a1b6225043a6
+      size: 2185189
   evaluation:
     cmd: python src/databank_mlops/pipeline/model_evaluation_pipeline.py
     deps:
@@ -118,18 +118,18 @@ stages:
       size: 23001970
     - path: artifacts/model_trainer/XGBClassifier__1.0.joblib
       hash: md5
-      md5: 61fe45e4994d93531b3f842e4243f626
-      size: 1508844
+      md5: 3cc347a1e79257dc0f18a1b6225043a6
+      size: 2185189
     - path: config/config.yaml
       hash: md5
-      md5: cb6840e60827c1f3880a0049ce0501ea
+      md5: 01c485061fa72be938e0102f83ceb138
       size: 4358
     - path: src/databank_mlops/components/evaluation/model_evaluation.py
       hash: md5
-      md5: 72d41baa7c32b5ab0ed984c14b206ea2
-      size: 4491
+      md5: bc0a0175482e3a5d55e409f5bd27b2b6
+      size: 4695
     outs:
     - path: artifacts/model_evaluation/metrics.json
       hash: md5
-      md5: 6b48ab8ffb4a93fc9fca7ad624f3799d
-      size: 321
+      md5: 9d223f87e9d1690dcd51545d0411fc9a
+      size: 319
