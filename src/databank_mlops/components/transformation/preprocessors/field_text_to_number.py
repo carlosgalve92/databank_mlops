@@ -21,7 +21,7 @@ class mb_clean_text_number(BaseEstimator, TransformerMixin):
     def transform(self, X):
         """ """
         for c in X.columns:
-            X[c] = X[c].astype(str).str.strip('_ ,"')
+            X[c] = X[c].astype(str).str.replace(r"(\_|,|\")", "", regex=True)
             X[c] = pd.to_numeric(X[c], errors="coerce")
         return X
 
