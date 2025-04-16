@@ -27,6 +27,9 @@ jobs:
       - name: Clonar repositorio
         uses: actions/checkout@v4
 
+      - name: Install CML
+        uses: iterative/setup-cml@v2
+
       - name: Instalar Python
         uses: actions/setup-python@v5
         with:
