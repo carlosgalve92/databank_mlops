@@ -1,0 +1,57 @@
+name: Reproducir pipeline DVC con DagsHub
+
+on:
+  push:
+    branches: [main]
+    #paths:
+      #- 'src/**'
+  #schedule:
+  #  - cron: '0 6 * * 1'  # Todos los lunes a las 06:00 UTC
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      repo_token: ${{ secrets.GITHUB_TOKEN }}   
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Instalar dependencias
+        run: |
+          pip install -r requirements.txt
+          pip install dvc[http]
+
+      - name: Configurar DVC remoto
+        run: |
+          dvc remote modify origin --local auth basic
+          dvc remote modify origin --local user "${{ secrets.DAGSHUB_USER }}"
+          dvc remote modify origin --local password "${{ secrets.DAGSHUB_TOKEN }}"
+
+      - name: Descargar datos desde DagsHub
+        run: dvc pull
+
+      - name: Pruebas unitarias
+        run: pytest
+
+      - name: Ejecutar pipeline
+        run: dvc repro
+
+      - name: Subir resultados a DagsHub
+        run: dvc push
+
+      - name: Commit si hay cambios
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git fetch --prune
+          dvc metrics diff --show-md main > report.md
+          cml comment create report.md
