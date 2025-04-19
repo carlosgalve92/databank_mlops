@@ -2,6 +2,9 @@ from functools import lru_cache
 from databank_mlops.utils.common import read_yaml
 from databank_mlops.constants import CONFIG_FILE_PATH
 import mlflow
+from dotenv import load_dotenv
+
+load_dotenv()
 
 config_production = read_yaml(CONFIG_FILE_PATH).production
 

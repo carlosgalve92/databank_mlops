@@ -25,7 +25,9 @@ dependencies = [
     "xgboost",
     "mlflow",
     "kaggle",
-    "python-dotenv"
+    "python-dotenv",
+    "evidently",
+    "sqlalchemy==1.4.54",
 ]
 
 [project.optional-dependencies]
@@ -37,7 +39,7 @@ dev = [
     "jupyter",
     "openpyxl", "pyarrow",
     "polars", "duckdb",
-    "sqlalchemy", "duckdb-engine",
+    "duckdb-engine",
     "matplotlib", "seaborn", "optbinning",
     "kaggle",
     "torch", "tensorflow",
