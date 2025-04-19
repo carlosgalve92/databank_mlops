@@ -1,3 +1,30 @@
+## v10.0.0 (2025-04-19)
+
+### Feat
+
+- **src-y-airflow**: Se incorpora resto
+- **config**: Se actualizan hiperparametros modelo
+- **github_action**: Prueba 11
+- **github_action**: prueba 10
+- **github_action**: Prueba 9
+- **github_action**: prueba 8
+- **test**: se incorpora un test nuevo
+- **github_action**: prueba 7
+- **github_action**: Prueba 6
+- **github_action**: prueba5
+- **github_action**: prueba4
+- **github_action**: prueba3
+- **field_text_to_number.py**: Se modifica funcionalidad con regex
+- **github_action**: Prueba 1
+- **github_action**: Se modifica para probar
+- **config**: Se modifica configuracion modelo
+- **github_action**: Se incorpora nueva accion
+- **experiment**: New experiment
+
+### Fix
+
+- **github_action**: Preuba 2
+
 ## v9.0.0 (2025-04-13)
 
 ### Feat
