@@ -23,7 +23,7 @@ dependencies = [
     "dvc[s3]",
     "python-box",
     "xgboost",
-    "mlflow",
+    "mlflow==2.22.0",
     "kaggle",
     "python-dotenv",
     "evidently",
