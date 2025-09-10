@@ -118,8 +118,8 @@ model_trainer:
         model: XGBClassifier
         dict_params:
           objective: binary:logistic
-          n_estimators: 130
-          max_depth: 7
+          n_estimators: 128
+          max_depth: 4
           random_state: 202508
     - name: build_pipeline
       params: {}
